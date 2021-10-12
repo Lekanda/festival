@@ -1,0 +1,23 @@
+{
+  "name": "festival",
+  "version": "1.0.0",
+  "description": "App para info de un festival dde Rock",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lekanda/festival.git"
+  },
+  "keywords": [
+    "SASS",
+    "Gulp"
+  ],
+  "author": "Andrés Bernaola",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lekanda/festival/issues"
+  },
+  "homepage": "https://github.com/Lekanda/festival#readme"
+}
