@@ -2,9 +2,9 @@
 
 ## Informacion servidor
 
-1. Configuracion para **Laragon** en rama principal.
+1. Configuracion para **Laragon** en **rama principal**.
 
-2. Configuracion para **servidor base**.
+2. Configuracion para **servidor base** en rama **base**.
 
 ## Informacion de la App
 
