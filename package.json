@@ -20,7 +20,8 @@
     "url": "https://github.com/Lekanda/festival/issues"
   },
   "homepage": "https://github.com/Lekanda/festival#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "sass": "^1.42.1"
   }
 }
