@@ -4,7 +4,7 @@
   "description": "App para info de un festival dde Rock",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sass": "sass --watch src/scss:build/css"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Lekanda/festival/issues"
   },
-  "homepage": "https://github.com/Lekanda/festival#readme"
+  "homepage": "https://github.com/Lekanda/festival#readme",
+  "dependencies": {
+    "sass": "^1.42.1"
+  }
 }
