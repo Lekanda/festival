@@ -1,8 +1,7 @@
-$rojo : rgb(89, 159, 224);
+@import 'base/variables'; // Arriba p q se usan en otros
+
+@import 'contenido/contenido';
 
 body{
     background-color: $rojo;
-    h1{
-        font-size: 1rem;
-    }
 }
