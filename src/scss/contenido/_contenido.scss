@@ -1,3 +1,7 @@
+@use 'base/variables' as v;
 h1{
-    color: $azul;
+    color: v.$azul;
+}
+h2{
+    color: v.$rojo;
 }
