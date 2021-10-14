@@ -1,7 +1,6 @@
-@import 'base/variables'; // Arriba p q se usan en otros
-
+@import 'base/variables';
 @import 'contenido/contenido';
-
+// TODO no actualiza cambios en archivos secundarios solo en este actualiza.
 body{
     background-color: $rojo;
 }
