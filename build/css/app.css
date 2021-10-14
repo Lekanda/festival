@@ -1,7 +1,15 @@
 h1 {
-  color: #13137c;
+  color: #9e0e0e;
+  text-transform: uppercase;
+  background-color: #6989f1;
 }
 
 h2 {
   color: #9e0e0e;
+  text-transform: uppercase;
+}
+
+h3 {
+  color: #9e0e0e;
+  text-transform: uppercase;
 }

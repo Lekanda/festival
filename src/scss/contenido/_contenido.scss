@@ -1,7 +1,15 @@
 @use 'base/variables' as v;
 h1{
-    color: v.$azul;
+    color: v.$rojo;
+    text-transform: uppercase;
+    background-color: rgb(105, 137, 241);
+    
 }
 h2{
     color: v.$rojo;
+    text-transform: uppercase;
+}
+h3{
+    color: v.$rojo;
+    text-transform: uppercase;
 }

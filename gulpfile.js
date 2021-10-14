@@ -7,14 +7,14 @@ const sass = require('gulp-sass')(require('sass'));
 // Compila SASS
 function css(done) {
     // Identificar el archivo 'scss' a compilar
-    src('src/scss/app.scss') // 'pipe' hace esperar hasta que esta lista la anterior
+    src('src/scss/**/*.scss') // 'pipe' hace esperar hasta que esta lista la anterior
         .pipe(sass()) // Compilarlo
         .pipe(dest('build/css')) // Almacenarla
     done();
 }
 
 function dev(done) {
-    watch('src/scss/app.scss', css);
+    watch('src/scss/**/*.scss', css);
     done();
 }
 exports.css = css;
