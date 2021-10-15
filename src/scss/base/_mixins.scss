@@ -23,7 +23,11 @@
 
 
 
-
+@mixin grid($columnas,$gap) {
+    display: grid;
+    grid-template-columns: repeat($columnas,1fr);
+    gap: $gap;
+}
 
 
 
