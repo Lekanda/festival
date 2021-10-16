@@ -29,6 +29,14 @@
     gap: $gap;
 }
 
+@mixin resetear-lista{
+    // ul agrega viñetas, margin y padding, con esto los quitamos.
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+}
+
 
 
 
