@@ -7,12 +7,15 @@ const sass = require('gulp-sass')(require('sass'));
 // Plumber
 const plumber = require('gulp-plumber');
 
-// Minificar las imagenes. Version 8 no funciona instalar la 7.1.0
-const cache = require('gulp-cache');
-const imagemin = require('gulp-imagemin');// Aligera la imagen
 
+// IMAGENES
+// Minificar las imagenes. Version 8 no funciona instalar la 7.1.0
+const cache = require('gulp-cache');// Necesario para imagemin
+const imagemin = require('gulp-imagemin');// Aligera la imagen
 // Imagenes WEBP
 const webp = require('gulp-webp');
+// Imagenes AVIF(Formato nuevo)
+const avif = require('gulp-avif');
 
 
 // Compila SASS
@@ -52,6 +55,18 @@ function versionWebp(done) {
 }
 
 
+// Convierte imagenes a AVIF y guarda 
+function versionAvif(done) {
+    const opciones = {
+        quality:50
+    };
+    src('src/img/**/*.{jpg,png}') // Busca
+        .pipe(avif(opciones)) // convierte
+        .pipe(dest('build/img')) // guarda
+    done();
+}
+
+
 
 function dev(done) {
     watch('src/scss/**/*.scss', css);
@@ -60,7 +75,8 @@ function dev(done) {
 exports.css = css;
 exports.imagenes = imagenes;
 exports.versionWebp = versionWebp;
-exports.dev = parallel(imagenes,versionWebp,dev);
+exports.versionAvif = versionAvif;
+exports.dev = parallel(imagenes,versionWebp,versionAvif,dev);
 // parallel: ejecuta todas a la vez
 // serie: una detras de otra
 
