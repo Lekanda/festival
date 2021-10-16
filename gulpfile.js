@@ -7,6 +7,10 @@ const sass = require('gulp-sass')(require('sass'));
 // Plumber
 const plumber = require('gulp-plumber');
 
+// Minificar las imagenes. Version 8 no funciona instalar la 7.1.0
+const cache = require('gulp-cache');
+const imagemin = require('gulp-imagemin');// Aligera la imagen
+
 // Imagenes WEBP
 const webp = require('gulp-webp');
 
@@ -22,6 +26,21 @@ function css(done) {
 }
 
 
+// Minimifica las imagenes
+function imagenes(done) {
+    const opciones = {
+        optimizationLevel: 3
+    }
+    //Identifica las imagenes
+    src('src/img/**/*.{jpg,png}')
+        .pipe(cache(imagemin(opciones)))
+        .pipe(dest('build/img'))
+    done();
+}
+
+
+
+// Convierte a webp y guarda 
 function versionWebp(done) {
     const opciones = {
         quality:50
@@ -34,15 +53,14 @@ function versionWebp(done) {
 
 
 
-
-
 function dev(done) {
     watch('src/scss/**/*.scss', css);
     done();
 }
 exports.css = css;
+exports.imagenes = imagenes;
 exports.versionWebp = versionWebp;
-exports.dev = parallel(versionWebp,dev);
+exports.dev = parallel(imagenes,versionWebp,dev);
 // parallel: ejecuta todas a la vez
 // serie: una detras de otra
 
