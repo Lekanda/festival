@@ -29,6 +29,7 @@ function css(done) {
 }
 
 
+
 // Minimifica las imagenes
 function imagenes(done) {
     const opciones = {
@@ -66,17 +67,29 @@ function versionAvif(done) {
     done();
 }
 
-
-
-function dev(done) {
-    watch('src/scss/**/*.scss', css);
+// Compila JS a /build
+function javascript(done) {
+    src('src/js/**/*.js')
+        .pipe(dest('build/js'))
     done();
 }
+
+
+// Mira cambios en CSS.
+function dev(done) {
+    watch('src/scss/**/*.scss', css);
+    watch('src/js/**/*.js', javascript);
+    done();
+}
+
+
+
 exports.css = css;
+exports.js = javascript;
 exports.imagenes = imagenes;
 exports.versionWebp = versionWebp;
 exports.versionAvif = versionAvif;
-exports.dev = parallel(imagenes,versionWebp,versionAvif,dev);
+exports.dev = parallel(imagenes,versionWebp,versionAvif,javascript,dev);
 // parallel: ejecuta todas a la vez
 // serie: una detras de otra
 
