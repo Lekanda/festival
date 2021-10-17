@@ -4,8 +4,27 @@ document.addEventListener('DOMContentLoaded',function () {
 
 
 function iniciarApp() { 
+    navegacionFija();
     crearGaleria();
     scrollNav();
+}
+
+function navegacionFija() {
+    // selecciona la barra
+    const barra = document.querySelector('.header');
+    // Elemento donde aparece la barra de arriba. el que marca la posicion del scroll.
+    const sobreFestival = document.querySelector('.sobre-festival');
+    window.addEventListener('scroll', function () { 
+        // console.log(sobreFestival.getBoundingClientRect());
+
+        if(sobreFestival.getBoundingClientRect().bottom < 0){
+            // console.log('Ya paso el elemento');
+            barra.classList.add('fijo');
+        } else {
+            // console.log('Aun no paso el elemento');
+            barra.classList.remove('fijo');
+        }
+    })
 }
 
 function scrollNav() {
