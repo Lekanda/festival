@@ -1,17 +1,21 @@
 // API de Gulp para trabajar con el.'src' para identificar el archivo. 'dest'
 const {parallel,src, dest,watch} = require('gulp');
+
+/******* CSS ******/
 // Con 'gulp-sass' conectamos con el compilador de SASS. Por eso hace falta 2 require
 const sass = require('gulp-sass')(require('sass'));
 // const sass = require('gulp-dart-sass'); // sustituye a las 2 anteriores.
-
 // Plumber
-const plumber = require('gulp-plumber');
+const plumber = require('gulp-plumber');// No para el codigo sí error en scss.
+const autoprefixer = require('autoprefixer');// Se asegura que funciona en el navegador
+const cssnano = require('cssnano');// Comprime el coddigo CSS
+const postcss = require('gulp-postcss');// Transforma por medio de los 2 anteriores.
 
 
 // IMAGENES
 // Minificar las imagenes. Version 8 no funciona instalar la 7.1.0
 const cache = require('gulp-cache');// Necesario para imagemin
-const imagemin = require('gulp-imagemin');// Aligera la imagen
+const imagemin = require('gulp-imagemin');// Aligera la imagen.@7.1.0
 // Imagenes WEBP
 const webp = require('gulp-webp');
 // Imagenes AVIF(Formato nuevo)
@@ -24,6 +28,7 @@ function css(done) {
     src('src/scss/**/*.scss') // 'pipe' hace esperar hasta que esta lista la anterior
         .pipe(plumber()) // No para el codigo sí error en scss.
         .pipe(sass()) // Compilarlo
+        .pipe(postcss([autoprefixer(), cssnano()]))//
         .pipe(dest('build/css')) // Almacenarla
     done();
 }
