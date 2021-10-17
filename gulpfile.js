@@ -21,6 +21,9 @@ const imagemin = require('gulp-imagemin');// Aligera la imagen.@7.1.0
 const webp = require('gulp-webp');
 // Imagenes AVIF(Formato nuevo)
 const avif = require('gulp-avif');
+// Mejora el codigo JS
+const terser = require('gulp-terser-js');
+
 
 
 // Compila SASS
@@ -78,6 +81,9 @@ function versionAvif(done) {
 // Compila JS a /build
 function javascript(done) {
     src('src/js/**/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(terser())
+        .pipe(sourcemaps.write('.'))
         .pipe(dest('build/js'))
     done();
 }
