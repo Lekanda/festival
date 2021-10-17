@@ -10,6 +10,7 @@ const plumber = require('gulp-plumber');// No para el codigo sí error en scss.
 const autoprefixer = require('autoprefixer');// Se asegura que funciona en el navegador
 const cssnano = require('cssnano');// Comprime el coddigo CSS
 const postcss = require('gulp-postcss');// Transforma por medio de los 2 anteriores.
+const sourcemaps = require('gulp-sourcemaps');// EN EL NAVEGADOR se pueden ver los estilos aunque este puesto en cssnano.
 
 
 // IMAGENES
@@ -26,9 +27,11 @@ const avif = require('gulp-avif');
 function css(done) {
     // Identificar el archivo 'scss' a compilar
     src('src/scss/**/*.scss') // 'pipe' hace esperar hasta que esta lista la anterior
+        .pipe(sourcemaps.init())
         .pipe(plumber()) // No para el codigo sí error en scss.
         .pipe(sass()) // Compilarlo
         .pipe(postcss([autoprefixer(), cssnano()]))//
+        .pipe(sourcemaps.write('.'))// '.': Misma ubicacion que  la hoja de estilos CSS
         .pipe(dest('build/css')) // Almacenarla
     done();
 }
