@@ -11,6 +11,11 @@ html{
 body{
     font-family: v.$fuente_principal;
     font-size: 1.6rem;
+
+    // Cuando este presente la clase fijar-body(app.js).
+    &.fijar-body{
+        overflow: hidden;//No hace scroll
+    }
 }
 p{
     font-size: 2rem;
